@@ -1,4 +1,4 @@
-## Task 02: Alien Simulator – Extension
+## Task 03: Alien Simulator – New Packages
 
 ### My thought process for this Task
 
