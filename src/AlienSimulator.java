@@ -1,13 +1,17 @@
+import aliens_3rdparty.AlienFromNY;
+import aliens_3rdparty.NeutralBesuchen;
+import aliens_3rdparty.ZerstoererischBesuchen;
+
 public class AlienSimulator {
 
     public static void main(String[] args) {
-        System.out.println("=== Alien Simulator - Task 02 ===\n");
+        System.out.println("=== Alien Simulator - Task 03 (Adapter Pattern) ===\n");
 
+        System.out.println("=== Original Aliens ===");
         Alien marsAlien = new MarsAlien();
         Alien moonAlien = new MoonAlien();
         Alien venusAlien = new VenusAlien();
 
-        System.out.println("=== Initial Behavior ===");
         marsAlien.display();
         marsAlien.performVisit();
         System.out.println();
@@ -20,19 +24,32 @@ public class AlienSimulator {
         venusAlien.performVisit();
         System.out.println();
 
-        System.out.println("=== Changing Behavior After Landing ===");
-        System.out.println("Mars Alien changes to friendly:");
-        marsAlien.setVisitBehavior(new FriendlyVisit());
+        System.out.println("=== Third-Party Alien with Adapters ===");
+        AlienFromNY alienFromNY = new AlienFromNY();
+        Alien adaptedAlien = new AlienAdapter(alienFromNY);
+
+        adaptedAlien.display();
+        adaptedAlien.fly();
+        adaptedAlien.setVisitBehavior(new NeutralVisitAdapter(new NeutralBesuchen()));
+        adaptedAlien.performVisit();
+        System.out.println();
+
+        System.out.println("=== Changing Third-Party Alien Behavior ===");
+        adaptedAlien.setVisitBehavior(new AggressiveVisitAdapter(new ZerstoererischBesuchen())); // ZerstoererischBesuchen
+                                                                                                 // english: destructive
+                                                                                                 // visit
+        adaptedAlien.performVisit();
+        System.out.println();
+
+        System.out.println("=== Using Third-Party Behaviors with Original Aliens ===");
+        marsAlien.setVisitBehavior(new NeutralVisitAdapter(new NeutralBesuchen())); // NeutralBesuchen english: neutral
+                                                                                    // visit
         marsAlien.performVisit();
         System.out.println();
 
-        System.out.println("Moon Alien changes to aggressive:");
-        moonAlien.setVisitBehavior(new AggressiveVisit());
+        moonAlien.setVisitBehavior(new AggressiveVisitAdapter(new ZerstoererischBesuchen())); // ZerstoererischBesuchen
+                                                                                              // english: destructive
+                                                                                              // visit
         moonAlien.performVisit();
-        System.out.println();
-
-        System.out.println("Venus Alien changes to aggressive:");
-        venusAlien.setVisitBehavior(new AggressiveVisit());
-        venusAlien.performVisit();
     }
 }
