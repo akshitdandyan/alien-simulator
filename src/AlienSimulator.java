@@ -68,9 +68,10 @@ public class AlienSimulator {
         moonAlien.performVisit();
         System.out.println();
 
-        System.out.println("=== Creating UFOs with Abstract Factory ===");
-        UFOFactory alienUFOFactory = new AlienUFOFactory();
-        UFOFactory predatorUFOFactory = new PredatorUFOFactory();
+        System.out.println("=== Creating UFOs with Configurable Abstract Factory ===");
+        UFOFactory alienUFOFactory = new AlienUFOFactory(new Hyperdrive(), new Shield(), new PhaserCannon());
+        UFOFactory predatorUFOFactory = new PredatorUFOFactory(new WarpDrive(), new MetaphaseShield(),
+                new LaserCannon());
 
         UFO alienTransport = alienUFOFactory.createTransport();
         UFO alienBattlecruiser = alienUFOFactory.createBattlecruiser();

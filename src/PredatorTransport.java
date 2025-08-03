@@ -1,7 +1,7 @@
 public class PredatorTransport extends UFO {
 
-    public PredatorTransport() {
-        super(new WarpDrive(), new MetaphaseShield());
+    public PredatorTransport(DriveSystem driveSystem, ShieldSystem shieldSystem) {
+        super(driveSystem, shieldSystem);
     }
 
     @Override

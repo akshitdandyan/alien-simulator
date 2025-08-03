@@ -1,7 +1,7 @@
 public class AlienBattlecruiser extends UFO {
 
-    public AlienBattlecruiser() {
-        super(new Hyperdrive(), new Shield(), new PhaserCannon());
+    public AlienBattlecruiser(DriveSystem driveSystem, ShieldSystem shieldSystem, WeaponSystem weaponSystem) {
+        super(driveSystem, shieldSystem, weaponSystem);
     }
 
     @Override

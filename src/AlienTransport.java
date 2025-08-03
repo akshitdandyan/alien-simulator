@@ -1,7 +1,7 @@
 public class AlienTransport extends UFO {
 
-    public AlienTransport() {
-        super(new Hyperdrive(), new Shield());
+    public AlienTransport(DriveSystem driveSystem, ShieldSystem shieldSystem) {
+        super(driveSystem, shieldSystem);
     }
 
     @Override

@@ -1,7 +1,7 @@
 public class PredatorBattlecruiser extends UFO {
 
-    public PredatorBattlecruiser() {
-        super(new WarpDrive(), new MetaphaseShield(), new LaserCannon());
+    public PredatorBattlecruiser(DriveSystem driveSystem, ShieldSystem shieldSystem, WeaponSystem weaponSystem) {
+        super(driveSystem, shieldSystem, weaponSystem);
     }
 
     @Override
