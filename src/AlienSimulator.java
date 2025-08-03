@@ -1,6 +1,8 @@
 import aliens_3rdparty.AlienFromNY;
 import aliens_3rdparty.NeutralBesuchen;
 import aliens_3rdparty.ZerstoererischBesuchen;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 public class AlienSimulator {
 
@@ -71,8 +73,9 @@ public class AlienSimulator {
         System.out.println("=== Creating UFOs with Configurable Abstract Factory ===");
         UFOFactory alienUFOFactory = new AlienUFOFactory(new Hyperdrive(), new Shield(), new PhaserCannon());
 
-        PredatorUFOFactory predatorUFOFactory = new PredatorUFOFactory(new WarpDrive(), new MetaphaseShield(),
-                new LaserCannon());
+        System.out.println("=== Using Guice Dependency Injection ===");
+        Injector injector = Guice.createInjector(new PredatorModule());
+        PredatorUFOFactory predatorUFOFactory = injector.getInstance(PredatorUFOFactory.class);
 
         UFO alienTransport = alienUFOFactory.createTransport();
         UFO alienBattlecruiser = alienUFOFactory.createBattlecruiser();
@@ -102,5 +105,15 @@ public class AlienSimulator {
         System.out.println();
 
         registeredPredatorBattlecruiser.displayComponents();
+        System.out.println();
+
+        System.out.println("=== Creating UFOs with Guice-Injected Factory ===");
+        UFO guicePredatorTransport = predatorUFOFactory.createTransport();
+        UFO guicePredatorBattlecruiser = predatorUFOFactory.createBattlecruiser();
+
+        guicePredatorTransport.displayComponents();
+        System.out.println();
+
+        guicePredatorBattlecruiser.displayComponents();
     }
 }
