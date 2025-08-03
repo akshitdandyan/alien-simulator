@@ -70,7 +70,8 @@ public class AlienSimulator {
 
         System.out.println("=== Creating UFOs with Configurable Abstract Factory ===");
         UFOFactory alienUFOFactory = new AlienUFOFactory(new Hyperdrive(), new Shield(), new PhaserCannon());
-        UFOFactory predatorUFOFactory = new PredatorUFOFactory(new WarpDrive(), new MetaphaseShield(),
+
+        PredatorUFOFactory predatorUFOFactory = new PredatorUFOFactory(new WarpDrive(), new MetaphaseShield(),
                 new LaserCannon());
 
         UFO alienTransport = alienUFOFactory.createTransport();
@@ -88,5 +89,18 @@ public class AlienSimulator {
         System.out.println();
 
         predatorBattlecruiser.displayComponents();
+        System.out.println();
+
+        System.out.println("=== Using Factory Registry Pattern ===");
+        FactoryRegistry.register("default", predatorUFOFactory);
+
+        PredatorUFOFactory retrievedFactory = FactoryRegistry.get("default");
+        UFO registeredPredatorTransport = retrievedFactory.createTransport();
+        UFO registeredPredatorBattlecruiser = retrievedFactory.createBattlecruiser();
+
+        registeredPredatorTransport.displayComponents();
+        System.out.println();
+
+        registeredPredatorBattlecruiser.displayComponents();
     }
 }

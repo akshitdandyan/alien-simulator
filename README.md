@@ -1,5 +1,5 @@
-## Task 06: Configurable Factory
+## Task 07: Registry
 
 ### My thought process for this Task
 
-By making the Predator factory “configurable,” I believe I needed to allow external components (like drive, shield, and weapon systems) to be passed into the factory instead of hardcoding them. This way, the factory can create different types of UFOs using the injected parts. I updated the constructor to accept these components and stored them as instance variables. This made the factory more flexible and reusable.
+I knew how the registry pattern works — just store stuff in a static map and grab it later by name. So I made a simple FactoryRegistry with register and get, no overthinking. Since the task only wanted it for Predator factories, I didn’t bother making it generic. Later I used it into the simulator, and it just worked. It works fine for now, and I feel like it’ll be useful later if we have multiple preconfigured factories — like one for basic predators, one for upgraded ones, or if we ever let users switch configurations at runtime. Just makes things more flexible and modular.
