@@ -5,12 +5,15 @@ import aliens_3rdparty.ZerstoererischBesuchen;
 public class AlienSimulator {
 
     public static void main(String[] args) {
-        System.out.println("=== Alien Simulator - Task 03 (Adapter Pattern) ===\n");
+        System.out.println("=== Alien Simulator - Task 04 (Factory Pattern) ===\n");
 
-        System.out.println("=== Original Aliens ===");
-        Alien marsAlien = new MarsAlien();
-        Alien moonAlien = new MoonAlien();
-        Alien venusAlien = new VenusAlien();
+        AlienFactory alienFactory = new AlienFactory();
+        PredatorFactory predatorFactory = new PredatorFactory();
+
+        System.out.println("=== Creating Aliens with Factory ===");
+        Alien marsAlien = alienFactory.createAlien("mars");
+        Alien moonAlien = alienFactory.createAlien("moon");
+        Alien venusAlien = alienFactory.createAlien("venus");
 
         marsAlien.display();
         marsAlien.performVisit();
@@ -22,6 +25,18 @@ public class AlienSimulator {
 
         venusAlien.display();
         venusAlien.performVisit();
+        System.out.println();
+
+        System.out.println("=== Creating Predators with Factory ===");
+        Predator hishQuTen = predatorFactory.createPredator("hishquten");
+        Predator yautja = predatorFactory.createPredator("yautja");
+
+        hishQuTen.display();
+        hishQuTen.hunt();
+        System.out.println();
+
+        yautja.display();
+        yautja.hunt();
         System.out.println();
 
         System.out.println("=== Third-Party Alien with Adapters ===");
