@@ -1,5 +1,9 @@
-## Task 04: Creatures
+## Task 05: UFOs
 
 ### My thought process for this Task
 
-This task was actually pretty simple and quick. I just had to add a new species (predators) and create two concrete types for them. Then I used the Factory Method pattern to build both aliens and predators in a clean way. Since there was no interaction between the two groups yet, keeping them separate made the design easy to manage. The UML was also straightforward to update.
+At first, I was a bit confused by the term “abstract factory.” I thought it was just a regular factory with abstract methods or something. But then I realized it’s called that because it creates related groups of objects — like a whole UFO setup depending on whether it’s for aliens or predators.
+
+I had to map which factory creates which UFO, and what each UFO should contain. The only tricky part was deciding whether to show internal components (like drives and weapons) in the UML, but I kept it simple there and added more logic inside the code. Also, the diagram was getting big, so I made it a separate one and linked to the earlier one.
+
+Overall, once I understood the pattern, it was pretty fun to implement.

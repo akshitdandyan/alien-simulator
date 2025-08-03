@@ -66,5 +66,26 @@ public class AlienSimulator {
                                                                                               // english: destructive
                                                                                               // visit
         moonAlien.performVisit();
+        System.out.println();
+
+        System.out.println("=== Creating UFOs with Abstract Factory ===");
+        UFOFactory alienUFOFactory = new AlienUFOFactory();
+        UFOFactory predatorUFOFactory = new PredatorUFOFactory();
+
+        UFO alienTransport = alienUFOFactory.createTransport();
+        UFO alienBattlecruiser = alienUFOFactory.createBattlecruiser();
+        UFO predatorTransport = predatorUFOFactory.createTransport();
+        UFO predatorBattlecruiser = predatorUFOFactory.createBattlecruiser();
+
+        alienTransport.displayComponents();
+        System.out.println();
+
+        alienBattlecruiser.displayComponents();
+        System.out.println();
+
+        predatorTransport.displayComponents();
+        System.out.println();
+
+        predatorBattlecruiser.displayComponents();
     }
 }
