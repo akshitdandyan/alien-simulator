@@ -2,6 +2,8 @@
 
 ### My thought process for this Task
 
-I started by just trying to understand what the task was really asking. At first it looked simple — just aliens and display methods — but then I realized the key was in how behaviors like visitEarth() could change later. That’s when I thought of using the Strategy pattern.
+As discussed in our lecture also, to integrate 3rd party code that we can't change, we should use Adapter Design PAttern in such case.
 
-I made a few mistakes with the arrow types and forgot some UML rules, but fixing them helped me understand how each part connects. I also tried to keep things clean and not overcomplicate. This helped me see patterns more clearly and stick to only what’s needed for each step.
+I created AlienAdapter to use AlienFromNY and made separate adapters for the visit behaviors too, like NeutralVisitAdapter and AggressiveVisitAdapter. I made sure everything still worked with the Strategy pattern from Task 02. It was actually kind of cool to see both patterns work together — one to allow flexible behavior, the other to reuse weird external code.
+
+I messed up a couple UML arrow types and naming at first, but I corrected them after double-checking. Everything is properly wired now(I hope so).
